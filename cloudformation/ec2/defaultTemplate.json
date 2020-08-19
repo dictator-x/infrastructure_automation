@@ -1,15 +1,21 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "Default VPC template",
+
+    "Description": "Default EC2 template",
+
+    "Parameters": {
+
+    },
+
     "Resources": {
-        "myVPC" : {
-           "Type" : "AWS::EC2::VPC",
-           "Properties" : {
-              "CidrBlock" : "10.1.0.0/16",
-              "EnableDnsSupport" : "true",
-              "EnableDnsHostnames" : "true",
-              "Tags" : [ {"Key" : "Name", "Value" : "WXR"} ]
-           }
+        "TemplateEC2Instance": {
+            "Type": "AWS::EC2::Instance",
+            "Properties": {
+                "AvailabilityZone": "us-east-1a",
+                "ImageId": "ami-a4c7edb2",
+                "InstanceType": "t2.micro"
+            }
+
         }
     }
 }

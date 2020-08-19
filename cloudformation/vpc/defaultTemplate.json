@@ -3,13 +3,13 @@
     "Description": "Default VPC template",
     "Resources": {
         "myVPC" : {
-           "Type" : "AWS::EC2::VPC",
-           "Properties" : {
-              "CidrBlock" : "10.1.0.0/16",
-              "EnableDnsSupport" : "true",
-              "EnableDnsHostnames" : "true",
-              "Tags" : [ {"Key" : "Name", "Value" : "WXR"} ]
-           }
+            "Type" : "AWS::EC2::VPC",
+            "Properties" : {
+                "CidrBlock" : "10.0.0.0/16",
+                "EnableDnsSupport" : "true",
+                "EnableDnsHostnames" : "false",
+                "Tags" : [ {"Key" : "Name", "Value" : "WXR"} ]
+            }
         }
     }
 }
