@@ -16,3 +16,17 @@ variable "AMIS" {
     us-east-2 = "ami-02354e95b39ca8dec"
   }
 }
+
+variable "VM_TYPE" {
+  type = string
+  default = "AmazonLinux"
+}
+
+variable "VM_DEFAULT_USERNAME" {
+  type = map(string)
+  default = {
+    AmazonLinux = "ec2-user"
+    Ubuntu = "ubuntu"
+  }
+}
+

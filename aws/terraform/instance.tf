@@ -26,7 +26,7 @@ resource "aws_instance" "helloword" {
   connection {
     host = self.public_ip
     # user = "root"
-    user = "ec2-user"
+    user = lookup(var.VM_DEFAULT_USERNAME, var.VM_TYPE)
     private_key = file(var.PATH_TO_PRIVATE_KEY)
   }
 }
