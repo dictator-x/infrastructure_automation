@@ -24,13 +24,13 @@
         "ImageId": "ami-a4c7edb2",
         "InstanceType": { "Ref": "InstanceType" },
         "KeyName": { "Ref": "KeyName" },
-        "UserData" : { "Fn::Base64" : { "Fn::Join" : ["", [
-          "#!/bin/bash\n",
-          "yum install httpd -y\n",
-          "yum update -y\n",
-          "service httpd start\n",
-          "chkconfig httpd on\n",
-          "echo \"<html><h1>Hello World</h1></html>\" > /var/www/html/index.html\n"
+        "UserData" : { "Fn::Base64" : { "Fn::Join" : ["\n", [
+          "#!/bin/bash",
+          "yum install httpd -y",
+          "yum update -y",
+          "service httpd start",
+          "chkconfig httpd on",
+          "echo \"<html><h1>Hello World</h1></html>\" > /var/www/html/index.html"
         ]]}}
       }
     }
