@@ -30,3 +30,7 @@ variable "VM_DEFAULT_USERNAME" {
   }
 }
 
+variable "allowIp" {
+  type = list(string)
+}
+
