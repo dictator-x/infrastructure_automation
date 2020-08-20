@@ -3,6 +3,14 @@ resource "aws_key_pair" "temp_key" {
   public_key = file(var.PATH_TO_PUBLIC_KEY)
 }
 
+resource "aws_eip" "helloword_public_ip" {
+  vpc = true
+  instance = aws_instance.helloword.id
+  tags = {
+    Name = "helloword_public_ip"
+  }
+}
+
 resource "aws_instance" "helloword" {
   ami = lookup(var.AMIS, var.AWS_REGION)
   instance_type = "t2.micro"
