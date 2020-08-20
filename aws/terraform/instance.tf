@@ -9,6 +9,7 @@ resource "aws_instance" "helloword" {
   key_name = aws_key_pair.temp_key.key_name
   subnet_id = aws_subnet.my-vpc-public-1.id
   vpc_security_group_ids = [aws_security_group.allow_ssh_http_tls.id]
+  private_ip = "10.7.0.4"
   tags = {
     Name = "Helloword"
   }
