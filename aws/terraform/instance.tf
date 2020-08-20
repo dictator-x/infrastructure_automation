@@ -47,3 +47,7 @@ resource "aws_instance" "helloword" {
     private_key = file(var.PATH_TO_PRIVATE_KEY)
   }
 }
+
+output "helloworld_public_id" {
+  value = aws_instance.helloword.public_ip
+}
