@@ -13,6 +13,12 @@ resource "aws_instance" "helloword" {
     Name = "Helloword"
   }
 
+  root_block_device {
+    volume_size = 16
+    volume_type = "gp2"
+    delete_on_termination = true
+  }
+
   provisioner "file" {
     source = var.INITIAL_SCRIPT
     destination = "/tmp/script.sh"
