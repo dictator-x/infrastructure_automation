@@ -3,7 +3,7 @@ resource "aws_launch_configuration" "helloworld_launch_conf" {
   image_id = lookup(var.AMIS, var.AWS_REGION)
   instance_type = "t2.micro"
   key_name = aws_key_pair.temp_key.key_name
-  security_groups = [aws_security_group.allow_ssh_http_tls.id]
+  security_groups = [aws_security_group.allow_traffic_from_elb.id]
   user_data = data.template_file.helloworld_http_server_script.rendered
 }
 

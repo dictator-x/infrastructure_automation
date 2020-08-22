@@ -3,15 +3,15 @@ resource "aws_key_pair" "temp_key" {
   public_key = file(var.PATH_TO_PUBLIC_KEY)
 }
 
-resource "aws_eip" "helloword_public_ip" {
+resource "aws_eip" "bastion_public_ip" {
   vpc = true
-  instance = aws_instance.helloword.id
+  instance = aws_instance.bastion.id
   tags = {
-    Name = "helloword_public_ip"
+    Name = "bastion_public_ip"
   }
 }
 
-resource "aws_instance" "helloword" {
+resource "aws_instance" "bastion" {
   ami = lookup(var.AMIS, var.AWS_REGION)
   instance_type = "t2.micro"
   key_name = aws_key_pair.temp_key.key_name
@@ -19,7 +19,7 @@ resource "aws_instance" "helloword" {
   subnet_id = aws_subnet.public_subnet_1.id
 
   tags = {
-    Name = "Helloword"
+    Name = "bastion"
   }
 
   # user_data = data.template_file.helloworld_http_server_script.rendered
