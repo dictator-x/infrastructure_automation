@@ -50,7 +50,7 @@ resource "aws_security_group" "allow_traffic_from_elb" {
     to_port     = 443
     protocol    = "tcp"
     security_groups = [ aws_security_group.allow_ssh_http_tls.id ]
-    cidr_blocks = [ aws_subnet.public_subnet_1.cidr_block ]
+    # cidr_blocks = [ aws_subnet.public_subnet_1.cidr_block ]
   }
 
   ingress {
@@ -59,7 +59,7 @@ resource "aws_security_group" "allow_traffic_from_elb" {
     to_port     = 80
     protocol    = "tcp"
     security_groups = [ aws_security_group.allow_ssh_http_tls.id ]
-    cidr_blocks = [ aws_subnet.public_subnet_1.cidr_block ]
+    # cidr_blocks = [ aws_subnet.public_subnet_1.cidr_block ]
   }
 
   ingress {
@@ -67,7 +67,8 @@ resource "aws_security_group" "allow_traffic_from_elb" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = [ aws_subnet.public_subnet_1.cidr_block ]
+    security_groups = [ aws_security_group.allow_ssh_http_tls.id ]
+    # cidr_blocks = [ aws_subnet.public_subnet_1.cidr_block ]
   }
 
   egress {
