@@ -46,3 +46,14 @@ git clone https://github.com/zsh-users/zsh-autosuggestions /home/centos/.oh-my-z
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/centos/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-completions /home/centos/.oh-my-zsh/custom/plugins/zsh-completions
 git clone https://github.com/zsh-users/zsh-history-substring-search /home/centos/.oh-my-zsh/custom/plugins/zsh-history-substring-search
+
+# install bat
+wget https://github.com/sharkdp/bat/releases/download/v0.15.3/bat-v0.15.3-x86_64-unknown-linux-musl.tar.gz
+mkdir bat
+tar -xzvf bat-v0.15.3-x86_64-unknown-linux-musl.tar.gz -C bat --strip-components 1
+mv ./bat/bat /usr/local/bin
+
+# install fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git /tmp/.fzf
+/tmp/.fzf/install --all
+
