@@ -15,8 +15,28 @@ yum install nodejs -y
 yum install gcc make ncurses ncurses-devel -y
 yum install ctags tcl-devel ruby ruby-devel lua lua-devel luajit luajit-devel python python-devel perl perl-devel -y
 yum install perl-ExtUtils-ParseXS perl-ExtUtils-XSpp perl-ExtUtils-CBuilder perl-ExtUtils-Embed -y
+cd /tmp
 git clone https://github.com/vim/vim.git
 cd vim
 ./configure --with-features=huge --enable-multibyte --enable-rubyinterp --enable-pythoninterp --enable-perlinterp --enable-luainterp
 make install
-cd -
+cd /
+
+# Install zsh
+cd /tmp
+yum install -y git make ncurses-devel gcc autoconf man yodl
+git clone https://github.com/zsh-users/zsh.git
+cd zsh
+./Util/preconfig
+./configure
+make -j 20 install
+command -v zsh | sudo tee -a /etc/shells
+chsh -s "$(command -v zsh)" "centos"
+cd /
+
+# install oh-my-zsh
+cd /tmp
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# install powerlevel9k
+git clone https://github.com/bhilburn/powerlevel9k.git /home/centos/.oh-my-zsh/custom/themes/powerlevel9k
