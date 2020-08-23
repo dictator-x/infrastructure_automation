@@ -1,3 +1,10 @@
+resource "aws_default_security_group" "vpc_default_security_group" {
+  vpc_id = aws_vpc.vpc.id
+  tags = {
+    Name = "vpc_default_security_group"
+  }
+}
+
 resource "aws_security_group" "allow_ssh_http_tls" {
   name        = "allow_ssh_http_tls"
   description = "Allow TLS inbound traffic"

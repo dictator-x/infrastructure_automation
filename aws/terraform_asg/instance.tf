@@ -32,6 +32,11 @@ resource "aws_instance" "bastion" {
   }
 
   provisioner "file" {
+    source = var.PATH_TO_PRIVATE_KEY
+    destination = "~/temp_key.pem"
+  }
+
+  provisioner "file" {
     source = var.INITIAL_SCRIPT
     destination = "/tmp/script.sh"
   }

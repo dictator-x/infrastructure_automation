@@ -8,16 +8,16 @@ resource "aws_launch_configuration" "helloworld_launch_conf" {
 }
 
 resource "aws_autoscaling_group" "helloworld_autoscaling" {
+  depends_on = [aws_nat_gateway.nat_gw]
   name = "helloworld_autoscaling"
   force_delete = true
   vpc_zone_identifier = data.aws_subnet_ids.private.ids
   launch_configuration = aws_launch_configuration.helloworld_launch_conf.name
-  min_size = 3
+  min_size = 2
   max_size = 3
-  health_check_grace_period = 300
+  health_check_grace_period = 120
   # health_check_type = "EC2"
   health_check_type = "ELB"
-  load_balancers = [ aws_elb.classic_elb.name ]
   tag {
     key = "Name"
     value = "helloworld_launch_conf"

@@ -28,9 +28,9 @@ resource "aws_elb" "classic_elb" {
 
   # instances = [ aws_instance.helloword.id ]
   cross_zone_load_balancing = true
-  idle_timeout = 400
+  idle_timeout = 300
   connection_draining = true
-  connection_draining_timeout = 400
+  connection_draining_timeout = 300
 
   tags = {
     Name = "classic_elb"

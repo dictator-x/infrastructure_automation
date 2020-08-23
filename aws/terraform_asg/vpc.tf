@@ -112,10 +112,26 @@ data "aws_vpc" "vpc" {
   id = aws_vpc.vpc.id
 }
 data "aws_subnet_ids" "all" {
+  depends_on = [
+    aws_subnet.public_subnet_1,
+    aws_subnet.public_subnet_2,
+    aws_subnet.public_subnet_3,
+    aws_subnet.private_subnet_1,
+    aws_subnet.private_subnet_2,
+    aws_subnet.private_subnet_3
+  ]
   vpc_id = data.aws_vpc.vpc.id
 }
 
 data "aws_subnet_ids" "private" {
+  depends_on = [
+    aws_subnet.public_subnet_1,
+    aws_subnet.public_subnet_2,
+    aws_subnet.public_subnet_3,
+    aws_subnet.private_subnet_1,
+    aws_subnet.private_subnet_2,
+    aws_subnet.private_subnet_3
+  ]
   vpc_id = data.aws_vpc.vpc.id
   filter {
     name = "tag:Name"
@@ -124,6 +140,14 @@ data "aws_subnet_ids" "private" {
 }
 
 data "aws_subnet_ids" "public" {
+  depends_on = [
+    aws_subnet.public_subnet_1,
+    aws_subnet.public_subnet_2,
+    aws_subnet.public_subnet_3,
+    aws_subnet.private_subnet_1,
+    aws_subnet.private_subnet_2,
+    aws_subnet.private_subnet_3
+  ]
   vpc_id = data.aws_vpc.vpc.id
   filter {
     name = "tag:Name"
