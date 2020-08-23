@@ -40,3 +40,9 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 
 # install powerlevel9k
 git clone https://github.com/bhilburn/powerlevel9k.git /home/centos/.oh-my-zsh/custom/themes/powerlevel9k
+
+# install zsh plugins
+git clone https://github.com/zsh-users/zsh-autosuggestions /home/centos/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/centos/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-completions /home/centos/.oh-my-zsh/custom/plugins/zsh-completions
+git clone https://github.com/zsh-users/zsh-history-substring-search /home/centos/.oh-my-zsh/custom/plugins/zsh-history-substring-search
