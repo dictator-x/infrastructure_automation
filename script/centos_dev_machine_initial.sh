@@ -6,6 +6,8 @@ yum install wget -y
 yum install stress -y
 yum install bind-utils -y
 yum install telnet -y
+yum install python3 -y
+yum install cmake -y
 
 # install Node.js 14
 curl -sL https://rpm.nodesource.com/setup_14.x | sudo bash -
@@ -13,12 +15,12 @@ yum install nodejs -y
 
 # install vim8
 yum install gcc make ncurses ncurses-devel -y
-yum install ctags tcl-devel ruby ruby-devel lua lua-devel luajit luajit-devel python python-devel perl perl-devel -y
+yum install ctags tcl-devel ruby ruby-devel lua lua-devel luajit luajit-devel python python-devel python3 python3-devel perl perl-devel -y
 yum install perl-ExtUtils-ParseXS perl-ExtUtils-XSpp perl-ExtUtils-CBuilder perl-ExtUtils-Embed -y
 cd /tmp
 git clone https://github.com/vim/vim.git
 cd vim
-./configure --with-features=huge --enable-multibyte --enable-rubyinterp --enable-pythoninterp --enable-perlinterp --enable-luainterp
+./configure --with-features=huge --enable-multibyte --enable-rubyinterp --enable-pythoninterp --enable-perlinterp --enable-luainterp --enable-python3interp --with-python3-config-dir=$(python3-config --configdir)
 make install
 cd /
 
@@ -57,3 +59,6 @@ mv ./bat/bat /usr/local/bin
 git clone --depth 1 https://github.com/junegunn/fzf.git /tmp/.fzf
 /tmp/.fzf/install --all
 
+# install vundle:
+git clone https://github.com/VundleVim/Vundle.vim.git /home/centos/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
